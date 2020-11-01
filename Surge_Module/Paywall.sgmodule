@@ -1,8 +1,2 @@
 #!name=Caixin membership 
 #!desc= Caixin membership 
-#!system = iOS
-
-[Script]
-# Caixin
-
-http-response https:\/\/mappsv5.caixin.com\/articlev5\/\d+\/\d+\.html\?noImg=0&fontsize=1 requires-body=1,script-path=https://raw.githubusercontent.com/JadaGates/Surge_Script/main/Surge_Script/Caixin.js,tag=财新周刊
