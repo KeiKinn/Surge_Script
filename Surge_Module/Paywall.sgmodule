@@ -1,9 +1,8 @@
-#!name=Caixin membership 
-#!desc= Caixin membership 
+#!name=Paywall
+#!desc= Paywall crack
 
 [Script]
-Caixin = type=http-response,pattern=https:\/\/mappsv5.caixin.com\/articlev5\/\d+\/\d+\.html\?noImg=0&fontsize=1,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/JadaGates/Surge_Script/main/Surge_Script/Caixin.js,script-update-interval=0
-
+Caixin = type=http-response,pattern=https:\/\/mappsv5.caixin.com\/articlev5\/\d+\/\d+\.html\?noImg=0&fontsize=1,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/JadaGates/Surge_Script/main/Surge_Script/Caixin.js
 
 [MITM]
-hostname = *caixin.com
+hostname =%APPEND% *caixin.com
