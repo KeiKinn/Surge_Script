@@ -3,5 +3,4 @@ let body = $response.body;
 let ccsMask = '.cons>*,.idetor{display:none}.cons>p:first-of-type,.cons>p:nth-of-type(2),.cons>p:nth-of-type(3){display:block}';
 
 body = body.replace(ccsMask, '');
-body = body.replace("::after", '')
 $done({body});
