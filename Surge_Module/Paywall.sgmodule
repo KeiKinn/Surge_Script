@@ -1,6 +1,9 @@
 #!name=Paywall
 #!desc= Paywall crack
 
+[Rule]
+URL-REGEX,^https:\/\/file\.caixin\.com\/pkg\/cx-app-content\/dist\/js\/chunk-common\.js$,REJECT
+
 [Script]
 Caixin = type=http-response,pattern=https:\/\/mappsv5.caixin.com\/articlev5\/\d+\/\d+\.html\?noImg=0&fontsize=1,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/JadaGates/Surge_Script/main/Surge_Script/Caixin.js
 
