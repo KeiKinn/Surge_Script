@@ -1,5 +1,6 @@
 #!name=Paywall
-#!desc= Paywall crack
+#!desc=Paywall crack
+#!system=ios
 
 [Rule]
 URL-REGEX,^https:\/\/file\.caixin\.com\/pkg\/cx-app-content\/dist\/js\/chunk-common\.js$,REJECT // Adder for caixin app
