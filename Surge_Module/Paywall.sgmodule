@@ -10,6 +10,8 @@ URL-REGEX,^https:\/\/assets\.bwbx\.io\/s3\/fence\/v4\/.*js$,REJECT // Add for bl
 [Script]
 Caixin = type=http-response,pattern=https:\/\/mappsv5.caixin.com\/articlev5\/\d+\/\d+\.html\?noImg=0&fontsize=1,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/JadaGates/Surge_Script/main/Surge_Script/Caixin.js
 
+caixin-audio = type=http-response,pattern=^https:\/\/mappsv5\.caixin\.com\/audioV1\/category\/list_.*\.json$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/JadaGates/Surge_Script/main/Surge_Script/caixin-audio.js
+
 [Map Local]
 https://www.economist.com/api/bulk-subscriber data="EconomistSubscribeMockup.json" # 下载EconomistSubscribeMockup.json文件到Surge的iCloud文件夹中
 
