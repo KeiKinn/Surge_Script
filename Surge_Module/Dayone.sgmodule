@@ -1,0 +1,11 @@
+#!name=Dayone Premium
+#!desc= Dayone Premium crack
+#!system=ios
+
+[Script]
+//dayone_pre.js = debug=1,script-path=https://raw.githubusercontent.com/JadaGates/Surge_Script/main/Surge_Script/dayone_pre.js,type=http-request,pattern=^https:\/\/dayone\.me\/api\/users$
+
+dayone.surge.js = requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/JadaGates/Surge_Script/main/Surge_Script/dayone.js,script-update-interval=0,type=http-response,pattern=^https:\/\/dayone\.me\/api\/(users|v2\/users\/(account-status|receipt))$
+
+[MITM]
+hostname= *dayone.me
