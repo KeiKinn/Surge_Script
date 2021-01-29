@@ -1,0 +1,27 @@
+{
+  "success": true,
+  "errMsg": "success",
+  "data": {
+    "originReason": "",
+    "extInfo": {
+    },
+    "phone": "18091678989",
+    "temperature": {
+      "currentHealth": [
+      ]
+    },
+    "qrCode": "V51d3ab447c814b102eb4788670576511b610589",
+    "family": [
+    ],
+    "qrCodeText": "https://h5.dingtalk.com/healthAct/index.html?qrCode=V51d3ab447c814b102eb4788670576511b610589#/result",
+    "cityNo": "610500",
+    "level": "green",
+    "zjgxsj": "2020-04-12 20:08:25",
+    "idcardNo": "610121345676895",
+    "idcardType": "IDENTITY_CARD",
+    "name": "陈意"
+  },
+  "updateTime": null,
+  "errCode": 0,
+  "token": null
+}
