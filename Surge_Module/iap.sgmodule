@@ -1,0 +1,10 @@
+#!name=iap
+#!desc=iap crack
+#!system=ios
+
+[Script]
+komoot = type=http-response,pattern=^https:\/\/api\.komoot\.de\/v007\/users.*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/KeiKinn/Surge_Script/main/Surge_Script/komoot.js
+
+[MITM]
+hostname =%APPEND% api.komoot.de:443, www.komoot.com:443, a.tiles-api.maps.komoot.net:443
+
