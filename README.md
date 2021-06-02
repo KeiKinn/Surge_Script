@@ -3,8 +3,11 @@ Personal Surge Scripts and Modules
 
 ## Module Instruction
 
-### Dayone
+### IAP
 ✅ Unlock dayone premium on iOS
+
+✅ Unlock Komoot (Version 10.4x) premium on iOS
+
 
 ### Paywall
 
