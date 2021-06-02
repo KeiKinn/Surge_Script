@@ -8,7 +8,6 @@ Personal Surge Scripts and Modules
 
 ✅ Unlock Komoot (Version 10.4x) premium on iOS
 
-
 ### Paywall
 
 > The Truth Is Paywalled But The Lies Are Free.
