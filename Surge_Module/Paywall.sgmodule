@@ -9,12 +9,12 @@ URL-REGEX,^https:\/\/assets\.bwbx\.io\/s3\/fence\/v4\/.*js$,REJECT // Add for bl
 
 [Script]
 # caixin
-Caixin = type=http-response,pattern=https:\/\/mappsv5.caixin.com\/articlev5\/\d+\/\d+\.html\?noImg=0&fontsize=1,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/JadaGates/Surge_Script/main/Surge_Script/Caixin.js
-caixin-audio = type=http-response,pattern=^https:\/\/mappsv5\.caixin\.com\/audioV1\/category\/list_.*\.json$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/JadaGates/Surge_Script/main/Surge_Script/caixin-audio.js
+Caixin = type=http-response,pattern=https:\/\/mappsv5.caixin.com\/articlev5\/\d+\/\d+\.html\?noImg=0&fontsize=1,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/KeiKinn/Surge_Script/main/Surge_Script/Caixin.js
+caixin-audio = type=http-response,pattern=^https:\/\/mappsv5\.caixin\.com\/audioV1\/category\/list_.*\.json$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/KeiKinn/Surge_Script/main/Surge_Script/caixin-audio.js
 
 # wsj
-wsj = type=http-request,pattern=^https://www\.wsj\.com\/articles/.*,script-path=https://raw.githubusercontent.com/JadaGates/Surge_Script/main/Surge_Script/wsj-redirect.js
-wsj_body = type=http-response,pattern=https://www\.wsj\.com\/amp\/articles/.*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/JadaGates/Surge_Script/main/Surge_Script/wsj-body.js
+wsj = type=http-request,pattern=^https://www\.wsj\.com\/articles/.*,script-path=https://raw.githubusercontent.com/KeiKinn/Surge_Script/main/Surge_Script/wsj-redirect.js
+wsj_body = type=http-response,pattern=https://www\.wsj\.com\/amp\/articles/.*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/KeiKinn/Surge_Script/main/Surge_Script/wsj-body.js
 
 
 [Map Local]
