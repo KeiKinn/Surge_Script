@@ -5,7 +5,7 @@
 [Rule]
 URL-REGEX,^https:\/\/file\.caixin\.com\/pkg\/cx-app-content\/dist\/js\/chunk-common\.js$,REJECT // Adder for caixin app
 URL-REGEX,^https:\/\/file\.caixin\.com\/pkg\/cx-app-content\/dist\/js\/charged-read\.js$,REJECT // Added for caixin webpage
-URL-REGEX,^https:\/\/assets\.bwbx\.io\/s3\/fence\/[v|s]\d\/.*$,REJECT // Add for bloomberg webpage
+URL-REGEX,^https:\/\/assets\.bwbx\.io\/s3\/fence\/.*$,REJECT // Add for bloomberg webpage
 
 [Script]
 # caixin
