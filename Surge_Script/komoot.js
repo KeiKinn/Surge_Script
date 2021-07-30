@@ -7,4 +7,8 @@ if (url.includes('config') || url.includes('embedded=premium')) {
   body = body.replace('is_premium": fals', 'is_premium": tru');
 }
 
+if (url.include("v006")){
+  body = body.replace("NEEDSPURCHASE", "")
+}
+
 $done({body})
