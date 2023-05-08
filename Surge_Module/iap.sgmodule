@@ -4,7 +4,7 @@
 
 [Script]
 komoot = type=http-response,pattern=^https:\/\/api\.komoot\.de\/v00[6|7]\/users.*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/KeiKinn/Surge_Script/main/Surge_Script/komoot.js
-pdfexpert = ype=http-response,pattern=^https:\/\/license\.pdfexpert\.com\/api\/.+\/subscription\/(refresh$|check$),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/PDFExpert.js,script-update-interval=-1
+pdfexpert = type=http-response,pattern=^https:\/\/license\.pdfexpert\.com\/api\/.+\/subscription\/(refresh$|check$),requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/89996462/Quantumult-X/main/ycdz/PDFExpert.js,script-update-interval=-1
 [MITM]
 hostname =%APPEND% api.komoot.de:443, www.komoot.com:443, a.tiles-api.maps.komoot.net:443, license.pdfexpert.com
 
