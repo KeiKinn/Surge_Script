@@ -3,15 +3,9 @@
 #!system=ios
 
 [Rule]
-URL-REGEX,^https:\/\/file\.caixin\.com\/pkg\/cx-app-content\/dist\/js\/chunk-common\.js$,REJECT // Adder for caixin app
-URL-REGEX,^https:\/\/file\.caixin\.com\/pkg\/cx-app-content\/dist\/js\/charged-read\.js$,REJECT // Added for caixin webpage
 URL-REGEX,^https:\/\/assets\.bwbx\.io\/s3\/fence\/.*$,REJECT // Add for bloomberg webpage
 
 [Script]
-# caixin
-Caixin = type=http-response,pattern=https:\/\/mappsv5.caixin.com\/articlev5\/\d+\/\d+\.html\?noImg=0&fontsize=1,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/KeiKinn/Surge_Script/main/Surge_Script/Caixin.js
-caixin-audio = type=http-response,pattern=^https:\/\/mappsv5\.caixin\.com\/audioV1\/category\/list_.*\.json$,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/KeiKinn/Surge_Script/main/Surge_Script/caixin-audio.js
-
 # wsj
 wsj = type=http-request,pattern=^https://www\.wsj\.com\/articles/.*,script-path=https://raw.githubusercontent.com/KeiKinn/Surge_Script/main/Surge_Script/wsj-redirect.js
 wsj_body = type=http-response,pattern=https://www\.wsj\.com\/amp\/articles/.*,requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/KeiKinn/Surge_Script/main/Surge_Script/wsj-body.js
@@ -21,4 +15,4 @@ wsj_body = type=http-response,pattern=https://www\.wsj\.com\/amp\/articles/.*,re
 https://www.economist.com/api/bulk-subscriber data="EconomistSubscribeMockup.json" # 下载EconomistSubscribeMockup.json文件到Surge的iCloud文件夹中
 
 [MITM]
-hostname =%APPEND% *caixin.com,*economist.com,*bwbx.io,www.wsj.com:443
+hostname =%APPEND% *economist.com,*bwbx.io,www.wsj.com:443
