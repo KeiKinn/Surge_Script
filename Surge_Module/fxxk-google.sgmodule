@@ -1,5 +1,7 @@
+#!name=fxxk-Google
+#!desc=自动还原 Safari 搜索跳转行为
+
 [Script]
-# 自动还原 Safari 搜索跳转行为
 google-search-restore = type=http-response,pattern=^https:\/\/search\.app\.goo\.gl\/?.*,requires-body=1,script-path=https://raw.githubusercontent.com/KeiKinn/Surge_Script/refs/heads/main/Surge_Script/google-redirect-recover.js
 
 [MITM]
