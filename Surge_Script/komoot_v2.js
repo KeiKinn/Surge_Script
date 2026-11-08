@@ -1,75 +1,90 @@
-/*
- * Komoot 解锁增强脚本 (适配新版 iOS & iPadOS)
- */
 const url = $request.url;
 let body = $response.body;
 
-// 官方对于无内容/空响应的处理（如已解锁坐标本身返回空 Body）
-if (!body && !url.includes('/finance/products/regions/')) {
+// 1. 区域商品查询：命中官方规范，返回 0 字节空字符串阻止全球包兜底拉取
+if (url.includes('/finance/products/regions/')) {
+  $done({ body: "" });
+}
+
+if (!body) {
   $done({});
 }
 
 try {
-  // 1. 拦截用户配置：开启 Premium 特征开关
-  if (url.includes('/config')) {
-    let obj = JSON.parse(body);
-    obj.premium = true;
-    if (Array.isArray(obj.feature_flags)) {
-      if (!obj.feature_flags.includes('premium')) {
-        obj.feature_flags.push('premium');
+  // 2. 注入全局免检资产包：对标请求 [54] 的官方底层模型
+  if (url.includes('/finance/packages/')) {
+    if (url.includes('compactpath')) {
+      // 路线覆盖鉴权放行
+      let obj = JSON.parse(body);
+      obj.status = "UNLOCKED";
+      body = JSON.stringify(obj);
+    } else {
+      // 用户拥有的资产包列表：注入全球免检包，穿透 SQLite 多边形校验
+      let list = JSON.parse(body);
+      if (Array.isArray(list)) {
+        const hasAllRegions = list.some(item => item.allRegions === true);
+        if (!hasAllRegions) {
+          list.push({
+            "id": -1,
+            "product": "komoot Komplett-Paket",
+            "subscription": { "id": 1 },
+            "active": true,
+            "allRegions": true,            // 核心：直接绕过多边形计算
+            "cancelable": false,
+            "startdate": "2024-01-01 00:00:00 +0000",
+            "temporaryEntitlement": false,  // 模拟永久买断包
+            "freeUnlocked": false
+          });
+          body = JSON.stringify(list);
+        }
       }
     }
-    body = JSON.stringify(obj);
   }
 
-  // 2. 2026 版新增：注入基础地图功能权限清单 (product_features/free)
+  // 3. 2026 版能力总闸门：对标请求 [12] 注入 13 个特权中的离线核心项
   else if (url.includes('/product_features/free')) {
     let obj = JSON.parse(body);
-    if (!Array.isArray(obj.unlocked)) {
-      obj.unlocked = [];
-    }
+    if (!Array.isArray(obj.unlocked)) obj.unlocked = [];
 
-    const targetFeatures = [
+    const coreFeatures = [
       "offline_maps_navigation",
       "download_route",
-      "send_to_garmin"
+      "send_to_garmin",
+      "navigate_with_garmin"
     ];
 
-    const existingKeys = new Set(obj.unlocked.map(item => item.key));
-
-    targetFeatures.forEach(featureKey => {
-      if (!existingKeys.has(featureKey)) {
+    const existKeys = new Set(obj.unlocked.map(item => item.key));
+    coreFeatures.forEach(key => {
+      if (!existKeys.has(key)) {
         obj.unlocked.push({
-          key: featureKey,
+          key: key,
           action: null,
           start_date: "1970-01-01T00:00:00.000Z",
           end_date: null // 永久有效
         });
       }
     });
-
     body = JSON.stringify(obj);
   }
 
-  // 3. 拦截坐标区域商品查询：按官方已解锁规范返回 0 字节空字符串（避免 [] 触发全球包兜底）
-  else if (url.includes('/finance/products/regions/')) {
-    body = "";
-  }
-
-  // 4. 拦截路线覆盖鉴权（compactpath）
-  else if (url.includes('/finance/packages/') && url.includes('compactpath')) {
+  // 4. 账户配置：开启 Premium 特性标识
+  else if (url.includes('/config')) {
     let obj = JSON.parse(body);
-    if (obj.status === "NEEDSPURCHASE" || !obj.status) {
-      obj.status = "UNLOCKED";
+    obj.premium = true;
+    if (Array.isArray(obj.feature_flags) && !obj.feature_flags.includes('premium')) {
+      obj.feature_flags.push('premium');
     }
     body = JSON.stringify(obj);
   }
 
-  // 5. 活动及图文中的高级会员标识
-  else if (url.includes('activities') || url.includes('pioneer') || url.includes('embedded=premium')) {
-    body = body.replace(/"is_premium"\s*:\s*false/g, '"is_premium":true');
-    body = body.replace(/"premium"\s*:\s*false/g, '"premium":true');
+  // 5. 阻止订阅接口返回 204，防止应用拉取 StoreKit 购买列表
+  else if (url.includes('/subscriptions/purchased/premium')) {
+    body = JSON.stringify({
+      "status": "active",
+      "product_id": "premium_yearly"
+    });
   }
+
 } catch (e) {
   console.log("Komoot rewrite error: " + e);
 }
